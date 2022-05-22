@@ -13,16 +13,11 @@ def get_complementary_strand(origin: str) -> str:
 
 
 if __name__ == '__main__':
-    origin_strand, restriction_site = input(), input()
-    complementary_restriction_site, complementary_strand = get_complementary_strand(
-        restriction_site), get_complementary_strand(origin_strand)
-    origin_start, origin_end = origin_strand.index(restriction_site.split()[0]), origin_strand.index(
-        restriction_site.split()[1])
-    print(origin_strand[origin_start + 1:origin_end + 1])
 
-    complementary_start, complementary_end = complementary_strand.index(
-        complementary_restriction_site.split()[0]), complementary_strand.index(
-        complementary_restriction_site.split()[1])
-    print(complementary_strand[
-          complementary_start + len(complementary_restriction_site.split()[0]) - 1:complementary_end + len(
-              complementary_restriction_site.split()[1]) - 1])
+    with open(input()) as file:
+        first_line, second_line = file.readlines()
+        original_plasmid_strand, original_plasmid_strand_sticky, complementary_plasmid_strand, complementary_plasmid_strand_sticky = first_line.split()
+        original_gfp_strand_sticky, complementary_gfp_strand_sticky = second_line.split()
+
+    print(original_plasmid_strand, original_gfp_strand_sticky, original_plasmid_strand_sticky, sep="")
+    print(complementary_plasmid_strand, complementary_gfp_strand_sticky, complementary_plasmid_strand_sticky, sep="")
